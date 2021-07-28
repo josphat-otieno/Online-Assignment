@@ -1,19 +1,19 @@
-from django.contrib import admin
-from django.contrib.admin.options import TabularInline
-from django.db import models
-from .models import Teacher, Question,Answer
+# from django.contrib import admin
+# from django.contrib.admin.options import TabularInline
+# from django.db import models
+# from .models import Teacher, Question,Answer
 
-# Register your models here.
+# # Register your models here.
 
-admin.site.register(Teacher)
+# admin.site.register(Teacher)
 
-# admin.site.register(Quiz)
+# # admin.site.register(Quiz)
 
-class AnswerInline(admin.TabularInline):
-    model = Answer
+# class AnswerInline(admin.TabularInline):
+#     model = Answer
 
-class QuestionAdmin(admin.ModelAdmin):
-    inlines = [AnswerInline]
+# class QuestionAdmin(admin.ModelAdmin):
+#     inlines = [AnswerInline]
 
-admin.site.register(Question, QuestionAdmin)
-admin.site.register(Answer)
+# admin.site.register(Question, QuestionAdmin)
+# admin.site.register(Answer)

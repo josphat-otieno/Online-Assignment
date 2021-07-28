@@ -2,8 +2,8 @@ from django.shortcuts import render
 from .models import Quiz
 from django.views.generic import ListView
 from django.http import JsonResponse
-from teacher.models import Question, Answer
-from student.models import Result
+from .models import *
+
 
 class QuizListView(ListView):
     model = Quiz 
