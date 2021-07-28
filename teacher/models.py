@@ -10,7 +10,7 @@ class Teacher(models.Model):
 class Question(models.Model):
     text = models.CharField(max_length=100, default='')
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE,)
-    # created = models.DateTimeField(auto_now_add=True)
+    # created = models.DateTimeField()
 
     def __str__(self):
         return str(self.text)
@@ -18,12 +18,11 @@ class Question(models.Model):
     def get_answers(self):
         return self.answer_set.all()
 
-# class Answer(models.Model):
-#     text = models.CharField()
-#     correct = models.BooleanField(default=False)
-#     question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    
-#     def __str__(self):
-#         return f"question: {self.question.text}, answer: {self.text}, correct: {self.correct}"
-    
 
+class Answer(models.Model):
+    text = models.CharField(max_length=120, default='')
+    correct = models.BooleanField(default=False)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return f"question: {self.question.text}, answer: {self.text}, correct: {self.correct}"
