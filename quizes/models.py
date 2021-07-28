@@ -20,5 +20,5 @@ class Quiz(models.Model):
         return f"{self.name}--{self.topic}"
 
     def get_question(self):
-        pass
+        return self.question_set.all()
 
