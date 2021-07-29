@@ -1,6 +1,6 @@
 console.log("hello world")
 
-const modalBtns = [...document.getElementsByClassName('modal-button')]
+const modalBtns = [document.getElementsByClassName('modal-button')]
 const modalBody = document.getElementById('modal-body-confirm')
 const url = window.location.href
 modalBtns.forEach(modalBtn=>modalBtn.addEventListener('click', ()=>{

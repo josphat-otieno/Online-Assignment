@@ -1,6 +1,5 @@
-console.log('hello world quiz')
-const url = window.location.href
 
+const url = window.location.href
 const quizBox = document.getElementById('quiz-box')
 const scoreBox = document.getElementById('score-box')
 const resultBox = document.getElementById('result-box')
@@ -62,14 +61,14 @@ const sendData = () => {
             console.log(results)
             quizForm.classList.add('not-visible')
 
-            scoreBox.innerHTML = `${response.passed ? 'Congratulations You Passed! ' : 'Try Again..:( '}Your result is ${response.score.toFixed(2)}%`
+            scoreBox.innerHTML = `${response.passed ? 'Congratulations You Passed! ' : 'Try Again..:( '}Your result is ${response.score.toFixed(1)}%`
 
             results.forEach(res=>{
                 const resDiv = document.createElement("div")
                 for (const [question, resp] of Object.entries(res)){
 
                     resDiv.innerHTML += question
-                    const cls = ['container', 'p-3', 'text-light', 'h3']
+                    const cls = ['container', 'p-2', 'text-light', 'h4']
                     resDiv.classList.add(...cls)
 
                     if (resp=='not answered') {

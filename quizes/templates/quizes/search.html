@@ -22,7 +22,7 @@
       <div class=" col-md-6">
         <div class="panel">
           <div class="panel-header">
-            <a href=""><h1 style="color: blue;">{{quiz.name}}</h1></a>
+            <a href="{% url 'quizes:quiz-data-view' quiz.id %}"><h1 style="color: blue;">{{quiz.name}}</h1></a>
             
           </div>
           <!-- <div class="panel-body"><img src="{{project.project_image.url}}" style="height: 400px; width: 500px;" alt="">
