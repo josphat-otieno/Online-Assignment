@@ -9,6 +9,7 @@
 {% block content %}
 
 
+<div class="container"></div>
   <div class="modal fade" id="quizStartModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -28,14 +29,19 @@
     </div>
   </div>
 
-  <div class="h1"> Quiz List</div>
+  <div class="h1">Topics:</div>
   <hr>
-  {% for obj in object_list %}
-        <button class="btn btn-link modal-button" data-pk="{{obj.pk}}" data-quiz="{{obj.name}}" data-question="{{obj.number_of_questions}}"
+  
+    {% for obj in object_list %}
+        <button class="btn btn-link modal-button" style="font-size: 25px;" data-pk="{{obj.pk}}" data-quiz="{{obj.name}}" data-question="{{obj.number_of_questions}}"
         data-difficulty="{{obj.difficulty}}" data-time="{{obj.time}}" data-pass="{{obj.required_score_to_pass}}" data-toggle="modal" data-target="#quizStartModal"
         >
-    {{obj.name}}
+   <span class="text"><ol style="list-style: none;"><li> {{obj.name}}</li></ol></span>
     </button>
+    <hr>
+    <br>
+
+  
    
 
     {% endfor %}

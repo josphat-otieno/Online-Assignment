@@ -105,14 +105,14 @@ const sendData = () => {
             console.log(results)
             quizForm.classList.add('not-visible')
 
-            scoreBox.innerHTML = `${response.passed ? 'Congratulations! ' : 'Ups..:( '}Your result is ${response.score.toFixed(2)}%`
+            scoreBox.innerHTML = `${response.passed ? 'Congratulations You Passed! ' : 'Try Again..:( '}Your result is ${response.score.toFixed(2)}%`
 
             results.forEach(res=>{
                 const resDiv = document.createElement("div")
                 for (const [question, resp] of Object.entries(res)){
 
                     resDiv.innerHTML += question
-                    const cls = ['container', 'p-3', 'text-light', 'h6']
+                    const cls = ['container', 'p-3', 'text-light', 'h3']
                     resDiv.classList.add(...cls)
 
                     if (resp=='not answered') {

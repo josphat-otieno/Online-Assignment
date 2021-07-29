@@ -19,18 +19,17 @@ class EditProfileForm(UserChangeForm):
 class QuestionForm(forms.ModelForm):
     class Meta:
          model = Question
-         fields = ['']
+         fields = ['text']
 
 class QuizForm(forms.ModelForm):
     class Meta:
         model = Quiz
+        fields = ['name', 'topic', 'number_of_questions','required_score_to_pass','time','difficulty']
 
 class AnswerForm(forms.ModelForm):
     class Meta:
         model = Answer
-
-
-
+        fields = ['text', 'correct']
 
 
 # class ProfileUpdateForm(forms.ModelForm)

@@ -1,0 +1,43 @@
+{% extends 'quizes/base.html' %}
+{% load bootstrap3 %} {% load static %}
+
+{% block content %}
+<div class="continer-fluid" style="padding-top: 90px; background-color: #023047;font-family: Assistant;">
+  <div class="container" style="padding-top: 100px; color: antiquewhite;">
+
+    <div class="row">
+      {% if quizes%}
+      <h2>Found {{ quizes|length }} topics</h2>
+      {% else %}
+      <h2> Found 0 topics for the search term {{message}}</h2>
+      {% endif %}
+
+    </div>
+
+    <div class="row">
+      <div class="col-md-3"></div>
+      {% if quizes %}
+      {% for quiz in quizes %}
+      
+      <div class=" col-md-6">
+        <div class="panel">
+          <div class="panel-header">
+            <a href=""><h1 style="color: blue;">{{quiz.name}}</h1></a>
+            
+          </div>
+          <!-- <div class="panel-body"><img src="{{project.project_image.url}}" style="height: 400px; width: 500px;" alt="">
+            <p style="color: blue;">{{project.project_description}}</p>
+          </div> -->
+        </div>
+      </div>
+      <div class="col-md-3"></div>
+      {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+
+</div>
+{% endblock %}
+{% block scripts %} {{block.super}}
+<script type="text/javascript" src="{% static 'js/main.js '%}"></script>
+{% endblock %}

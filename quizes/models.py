@@ -1,9 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
-
+# class User(AbstractUser):
+#     is_student = models.BooleanField('student status', default=False)
+#     is_teacher = models.BooleanField('teacher status', default=False)
 
 class Student(models.Model):
     admin_number = models.IntegerField()
@@ -34,8 +37,14 @@ class Quiz(models.Model):
     def get_questions(self):
         return self.question_set.all()[:self.number_of_questions]
 
+    @classmethod
+    def search_project(cls, search_term):
+        return cls.objects.filter(name__icontains=search_term).all()
+
     class Meta:
         verbose_name_plural = 'Quizes'
+
+
 
 class Question(models.Model):
     text = models.CharField(max_length=100, default='')

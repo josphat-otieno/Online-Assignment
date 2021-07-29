@@ -27,7 +27,7 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/accounts/login'
+LOGOUT_REDIRECT_URL = '/'
 
 if config('MODE')=="dev":
     DATABASES={
@@ -75,8 +75,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'student',
-    'teacher',
     'quizes',
     'django.contrib.admin',
     'django.contrib.auth',

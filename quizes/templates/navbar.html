@@ -1,0 +1,119 @@
+<!-- <div class="navbar navbar-default navbar-fixed-top" role="navigation" style="background-color: #fb8500; color: antiquewhite;">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+        </button>
+      </div>
+      <div class="navbar-collapse collapse">
+        <a href="/" style="font-size: 25px; color: antiquewhite;"> Online</a>
+      </div>
+    
+      <div class="nav navbar-nav navbar-right">
+        <a  style="margin-right: 10px; font-size: 20px; color: antiquewhite;" href="">Post Question</a>
+  
+        <a  style="margin-right: 10px;font-size: 20px; color: antiquewhite;"href="">Profile </a>
+        {% if user.is_authenticated %}
+        <div class="nav navbar-nav navbar-right"><a style="margin-right: 10px;font-size: 20px; color: antiquewhite;" href="accounts/logout">Logout</a></div>
+        {% else %}
+        <ul>
+          <li><a style="color: green; font-size: larger; font-weight: bold;">
+            <a class='btn btn-default' href="/accounts/login">Login</a>
+            <a class='btn btn-default' href="/accounts/register">Sign Up</a>
+            {%endif%}
+            </li>
+        </ul>
+  
+      </div>
+    </div>
+  </div>
+  </div> -->
+
+
+  <!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>Top navbar example · Bootstrap v5.0</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/navbar-static/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    
+  </head>
+  <body>
+    
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+  <div class="container">
+    <a class="navbar-brand" href="/">Assignment</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li> -->
+      </ul>
+      <form  action="{% url 'quizes:search' %}" type="search" class="d-flex" style="margin-left: 80px; width: 300px;">
+        <input class="form-control me-2"   placeholder="Search Topics" aria-label="Search" name="quizes">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+    <div class="navbar navbar-expand-m"></div>
+    <div class="nav navbar-nav navbar-right">
+        <a  style="margin-right: 10px; font-size: 20px; color: antiquewhite;" href="{% url 'quizes:new-question' %}">Post Question</a>
+  
+        <a  style="margin-right: 10px;font-size: 20px; color: antiquewhite;"href="">Profile </a>
+        {% if user.is_authenticated %}
+        <div class="nav navbar-nav navbar-right"><a style="margin-right: 10px;font-size: 20px; color: antiquewhite;" href="accounts/logout">Logout</a></div>
+        {% else %}
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li>
+            <a  style="color: green; font-size: larger; font-weight: bold; color: aliceblue;" class='btn btn-default' href="/accounts/login">Login</a>
+        </li>
+        <li>
+            <a  style="color: green; font-size: larger; font-weight: bold; color: aliceblue;" class='btn btn-default' href="/accounts/register">Sign Up</a>
+        </li>
+           
+            {%endif%}
+       
+        </ul>
+  
+      </div>
+  </div>
+</nav>
+  </body>
+</html>

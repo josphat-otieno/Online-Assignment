@@ -1,0 +1,36 @@
+{% extends 'quizes/base.html' %}
+{% load bootstrap4 %} {% load static %}
+
+{% block content %}
+<div class="container-fluid" style="padding-top: 90px; background-color: #023047; color: antiquewhite; font-size: 25px;font-family: Assistant;">
+    <div class="row">
+        
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="content-section">
+
+                <div class="form-group">
+                    <form method="POST">
+
+                        {% csrf_token %}
+                        <h2>Quiz</h2>
+                        {{ quiz_form.as_p }}
+                        <h2>Questions</h2>
+                        {{ question_form.as_p }}
+                        <h2>Answers</h2>
+                        {{ answer_form.as_p }}
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+</div>
+
+
+{% endblock %}
+{% block scripts %} {{block.super}}
+<script type="text/javascript" src="{% static 'js/main.js '%}"></script>
+{% endblock %}
