@@ -69,9 +69,8 @@
   </head>
   <body>
     
-<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+<nav class="navbar   navbar-fixed-top navbar-expand-md navbar-dark bg-dark mb-4">
   <div class="container">
-    <a class="navbar-brand" href="/">Assignment</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -80,6 +79,9 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
+        <li>
+            <a  style="color: green; font-size: larger; font-weight: bold; color: aliceblue;" class='btn btn-default' href="/admin">Teacher</a>
+        </li>
         <!-- <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
         </li>
@@ -87,22 +89,27 @@
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li> -->
       </ul>
-      <form  action="{% url 'quizes:search' %}" type="search" class="d-flex" style="margin-left: 80px; width: 300px;">
+      <form  action="{% url 'quizes:search' %}" type="search" class="d-flex" style="margin-left: 200px; width: 300px;">
         <input class="form-control me-2"   placeholder="Search Topics" aria-label="Search" name="quizes">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
     </div>
     <div class="navbar navbar-expand-m"></div>
     <div class="nav navbar-nav navbar-right">
-        <a  style="margin-right: 10px; font-size: 20px; color: antiquewhite;" href="{% url 'quizes:new-question' %}">Post Question</a>
-  
-        <a  style="margin-right: 10px;font-size: 20px; color: antiquewhite;"href="">Profile </a>
+ 
         {% if user.is_authenticated %}
+       
+        <a  style="margin-right: 10px; font-size: 20px; color: antiquewhite;" href="{% url 'quizes:new-question' %}">Question</a>
+  
+        <a  style="margin-right: 10px;font-size: 20px; color: antiquewhite; text-transform: capitalize;"href="{% url 'quizes:profile' %}">{{user.username}}</a>
         <div class="nav navbar-nav navbar-right"><a style="margin-right: 10px;font-size: 20px; color: antiquewhite;" href="accounts/logout">Logout</a></div>
         {% else %}
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li>
+                <a  style="color: green; font-size: larger; font-weight: bold; color: aliceblue;" class='btn btn-default' href="/admin">Teacher</a>
+            </li>
           <li>
-            <a  style="color: green; font-size: larger; font-weight: bold; color: aliceblue;" class='btn btn-default' href="/accounts/login">Login</a>
+            <a  style="color: green; font-size: larger; font-weight: bold; color: aliceblue;" class='btn btn-default' href="/accounts/login">Student</a>
         </li>
         <li>
             <a  style="color: green; font-size: larger; font-weight: bold; color: aliceblue;" class='btn btn-default' href="/accounts/register">Sign Up</a>

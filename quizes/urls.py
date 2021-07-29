@@ -10,11 +10,13 @@ app_name = 'quizes'
 
 urlpatterns = [ 
     path('', QuizListView.as_view(), name = 'main-view'),
-    path('<pk>/', quiz_view, name='quiz-view'),
-    path('<pk>/save', save_quiz_view, name='save_quiz-view'),
-    path('<pk>/data/', quiz_data_view, name='quiz-data-view'),
+    path('<int:pk>/', quiz_view, name='quiz-view'),
+    path('<int:pk>/save', save_quiz_view, name='save_quiz-view'),
+    path('<int:pk>/data/', quiz_data_view, name='quiz-data-view'),
     url(r'^new/question', views.create_quiz, name='new-question'),
     path('search/', views.search, name='search'),
+    path('profile/', views.profile_view, name='profile'),
+    path('edit_profile/', views.edit_profile, name='edit_profile'),
 ]
 
 if settings.DEBUG:

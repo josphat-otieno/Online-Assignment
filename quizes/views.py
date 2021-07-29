@@ -45,7 +45,7 @@ def save_quiz_view(request, pk):
             print('key: ', k)
             question = Question.objects.get(text=k)
             questions.append(question)
-        print(questions)
+     
 
         user = request.user
         quiz = Quiz.objects.get(pk=pk)
@@ -86,7 +86,7 @@ def create_quiz(request):
     if request.method=='POST':
         question_form = QuestionForm(request.POST)
         quiz_form = QuizForm(request.POST)
-        answer_form = AnswerForm(request.POST)
+        answer_form = AnswerForm(request.POST, request.FILES, extra=3)
         if question_form.is_valid() and quiz_form.is_valid() and answer_form.is_valid():
             # question = question_form.save(commit=False)
             # quiz =quiz_form.save(commit=False)
@@ -99,7 +99,7 @@ def create_quiz(request):
             quiz_form.save()
             answer_form.save()
 
-            return redirect("main-view")
+            return redirect("quizes:main-view")
 
     else:
         question_form = QuestionForm()
@@ -113,7 +113,7 @@ def profile_view(request):
     user = request.user
     user = User.objects.get(username = user.username)
 
-    return render (request, 'awards/profile.html', {"user":user})
+    return render (request, 'quizes/profile.html', {"user":user})
 
 @login_required(login_url='/accounts/login/')
 def search(request):
@@ -128,3 +128,29 @@ def search(request):
         message = "You haven't searched for any quiz"
         return render(request, 'quizes/search.html',{"message":message})
 
+@login_required(login_url='/accounts/login/')
+def edit_profile(request):
+    user = request.user
+    if request.method == 'POST':
+        user_form=EditProfileForm(request.POST, request.FILES,instance =request.user)
+        profile_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.student)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            # messages.success(request, f'Your profile was updated successfuly')
+            return redirect("quizes:profile")
+    else:
+        user_form=EditProfileForm(instance =request.user)
+        profile_form = ProfileUpdateForm(instance=request.user.student)
+
+        context = {"user_form":user_form, "profile_form":profile_form, "user":user}
+        return render(request, 'quizes/edit_profile.html', context)
+
+
+# def dashboard(request):
+#    if "user" in request.session:
+#        user=request.session["user"]["username"]
+#        context={"user":user}
+#        return render(request,"dashboard.html",context)
+#    else:
+#        return HttpResponseNotFound("Page not found")

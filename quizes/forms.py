@@ -1,6 +1,7 @@
 from django import forms
 from django.db.models import fields
 from .models import *
+from django.forms import inlineformset_factory
 
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserChangeForm
@@ -32,13 +33,8 @@ class AnswerForm(forms.ModelForm):
         fields = ['text', 'correct']
 
 
-# class ProfileUpdateForm(forms.ModelForm)
-#     class Meta:
-#         model = UserProfile
-#         fields = ['bio', 'profile_photo', 'phone_number']
-
-
-
-
-
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Student
+        fields = ['admin_number',]
 

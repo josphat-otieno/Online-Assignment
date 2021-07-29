@@ -10,12 +10,14 @@ from django.contrib.auth.models import AbstractUser
 
 class Student(models.Model):
     admin_number = models.IntegerField()
-    student_name = models.CharField(max_length=120)
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='student')
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return (str(self.admin_number))
 
 class Teacher(models.Model):
     teacher_name = models.CharField(max_length=120)
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='teacher')
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
 DIFF_CHOICES =(
     ('easy,', 'easy'),
@@ -30,6 +32,7 @@ class Quiz(models.Model):
     time = models.IntegerField(help_text="durations of the quiz in minutes")
     required_score_to_pass = models.IntegerField(help_text="score in %")
     difficulty = models.CharField(max_length=10, choices=DIFF_CHOICES)
+    # student = models.ForeignKey(Student, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.name}--{self.topic}"

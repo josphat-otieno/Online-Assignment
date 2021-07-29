@@ -1,0 +1,27 @@
+{% extends 'quizes/base.html' %}
+{% load bootstrap3 %} {% load static %}
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300&family=Nanum+Gothic:wght@700&display=swap"
+  rel="stylesheet">
+
+{% block content %}
+<div class="container-fluid" style="padding-top: 60px;font-family: Assistant;">
+  <div class="container" style="padding-top: 70px;">
+    <div class="row">
+      <div class="col-md-6" style="color: antiquewhite;">
+        <h1>Student Details</h1>
+        <h3> Name: <span class="text text-capitalize">{{user.first_name}} {{user.last_name}}</span></h3>
+        <p style="font-size: 20px;">Email :{{user.email}}</p>
+        <p style="font-size: 20px;">Admin Number : {{user.student.admin_number}}</p>
+        <hr>
+        <button class="btn btn-outline-success"> <a href="{% url 'quizes:edit_profile' %}"> Edit Profile</a> </button>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}
+{% block scripts %} {{block.super}}
+<script type="text/javascript" src="{% static 'js/main.js '%}"></script>
+{% endblock %}
